@@ -4,11 +4,12 @@
 
 Code Notepad is a simple, web-based notepad application built with Node.js and vanilla JavaScript. It offers features such as:
 
-- Creating a new blank page
-- Downloading the page as a `.txt` file
-- Copying the entire page to the clipboard
-- Toggling between night and day modes
-- Viewing character and word counts
+- Creating a new blank page ![New Blank Page Icon](icons/new-blank-page-icon.png)
+- Downloading the page as a `.txt` file ![Download Icon](icons/download-icon.png)
+- Copying the entire page to the clipboard ![Copy Icon](icons/copy-icon.png)
+- Opening a `.txt` file ![Open File Icon](icons/open-file-icon.png)
+- Toggling between night and day modes ![Night/Day Mode Icon](icons/night-day-mode-icon.png)
+- Viewing character and word counts ![Counter Icon](icons/counter-icon.png)
 
 ## Installation
 
@@ -49,19 +50,23 @@ Code Notepad is a simple, web-based notepad application built with Node.js and v
 
 ### New Blank Page
 
-Click the "New Blank Page" button to clear the editor and start with a fresh page.
+Click the ![New Blank Page Icon](icons/new-blank-page-icon.png) button to clear the editor and start with a fresh page.
 
 ### Download Page
 
-Click the "Download Page" button to download the current content of the editor as a `.txt` file.
+Click the ![Download Icon](icons/download-icon.png) button to download the current content of the editor as a `.txt` file.
+
+### Open File
+
+Click the ![Open File Icon](icons/open-file-icon.png) button to open a `.txt` file into the editor.
 
 ### Copy Page
 
-Click the "Copy Page" button to copy the entire content of the editor to the clipboard.
+Click the ![Copy Icon](icons/copy-icon.png) button to copy the entire content of the editor to the clipboard.
 
 ### Night/Day Mode
 
-Click the "Night Mode" or "Day Mode" button to toggle between themes.
+Click the ![Night/Day Mode Icon](icons/night-day-mode-icon.png) button to toggle between themes.
 
 ### Character and Word Counter
 
@@ -69,7 +74,7 @@ View the character and word count at the bottom of the editor. This feature can 
 
 ## Settings
 
-Click the "Settings" button to open the settings overlay, where you can:
+Click the ![Settings Icon](icons/settings-icon.png) button to open the settings overlay, where you can:
 
 - Adjust the line height of the editor
 - Toggle the character and word counter
