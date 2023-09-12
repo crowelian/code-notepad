@@ -82,3 +82,8 @@ Click the ![Settings Icon](icons/settings-icon.png) button to open the settings 
 ## Offline Support
 
 This application is a Progressive Web App (PWA), which means it can work offline and can be installed as a standalone app on your device.
+
+## Using Remix Icon 3.5.0 fonts pack
+
+Get the pack and install it to 3rdparty/fonts folder.
+https://remixicon.com/
