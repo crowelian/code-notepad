@@ -57,6 +57,26 @@ function downloadPage() {
     URL.revokeObjectURL(url);
 }
 
+document.getElementById('fileInput').addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+        try {
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function () {
+                document.getElementById('editor').value = this.result;
+                saveContent();
+            });
+
+            reader.readAsText(file);
+        }
+        catch {
+            console.error("Error opening file...");
+        }
+    }
+});
+
+
 function copyPage() {
     editor.select();
     document.execCommand('copy');
