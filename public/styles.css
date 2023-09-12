@@ -1,90 +1,174 @@
-body, textarea {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-  }
-  
+body,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+#toolbar {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+#toolbar button i {
+  color: rgb(22, 22, 22);
+}
+
+#status {
+  font-weight: 600;
+  margin-left: 0.5em;
+}
+
+#statusIcon .ri-wifi-fill {
+  color: green;
+}
+
+#statusIcon .ri-wifi-off-fill {
+  color: red;
+}
+
+#dateTime {
+  font-size: 1em;
+  margin-left: 5px;
+
+
+  font-family: 'Teko', sans-serif;
+  font-weight: 100;
+}
+
+
+#editor {
+  width: 100%;
+  height: calc(100vh - 80px);
+  max-width: 100%;
+
+  padding: 15px;
+}
+
+#editor {
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding: 15px;
+  resize: none;
+  overflow-y: auto;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#counter {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+
+  font-size: 0.8em;
+  font-family: 'Fira Code', monospace;
+}
+
+#settingsOverlay {
+  font-family: 'Fira Code', monospace;
+}
+
+#closeSettingsBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#closeSettingsBtn i {
+  font-size: 1.5em;
+  color: red;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+
+  min-width: 200px;
+}
+
+.overlay-content label,
+.overlay-content input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.overlay-content .input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.overlay-content label {
+  margin: 0;
+}
+
+.overlay-content input {
+  flex: 1;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+
+/* Night Mode starts here... */
+body.night-mode,
+textarea.night-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+#toolbar.night-mode {
+  background-color: #383838;
+}
+
+.night-mode-button {
+  background-color: #444;
+  color: rgb(248, 248, 248)
+}
+
+.night-mode-button i {
+  color: rgb(248, 248, 248) !important;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
   #toolbar {
-    background-color: #f1f1f1;
-    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  #status {
-    font-weight: 600;
-  }
-  
   #editor {
-    width: 100%;
-    height: calc(100vh - 80px);
-    max-width: 100%;
-
-    padding: 15px;
-  }
-  #editor {
-    width: 100%;
-    height: calc(100vh - 60px); 
-    padding: 15px;
-    resize: none;
-    overflow-y: auto;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
+    height: calc(100vh - 110px);
   }
 
   #counter {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
+    margin-left: 0;
+    margin-top: 10px;
   }
 
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-  }
-  
   .overlay-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    width: 90%;
   }
-  
-  /* Night Mode */
-  body.night-mode, textarea.night-mode {
-    background-color: #333;
-    color: #fff;
-  }
-
-
-  
-
-
-  /* Mobile Styles */
-@media only screen and (max-width: 600px) {
-    #toolbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    #editor {
-      height: calc(100vh - 110px); /* Adjusted for stacked buttons */
-    }
-  
-    #counter {
-      margin-left: 0;
-      margin-top: 10px;
-    }
-  
-    .overlay-content {
-      width: 90%;
-    }
-  }
+}

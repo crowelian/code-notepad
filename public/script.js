@@ -1,21 +1,46 @@
 let editor = document.getElementById('editor');
 let isNightMode = false;
 
-// Initial check and set event listeners
+// Initialization
 updateOnlineStatus();
+
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 
 function updateOnlineStatus() {
     const statusElement = document.getElementById('status');
+    const statusIcon = document.getElementById('statusIcon');
+
     if (navigator.onLine) {
-        statusElement.textContent = 'Online';
+        statusIcon.className = 'ri-wifi-fill';
         statusElement.style.color = 'green';
     } else {
-        statusElement.textContent = 'Offline';
+        statusIcon.className = 'ri-wifi-off-fill';
         statusElement.style.color = 'red';
     }
 }
+
+function updateDateTime() {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const time = now.toLocaleTimeString('fi-FI');
+    const dateTimeString = `${day}.${month}.${year} ${time}`;
+    const dateTimeElement = document.getElementById('dateTime');
+
+    dateTimeElement.textContent = dateTimeString;
+
+    dateTimeElement.style.color = isNightMode ? 'white' : 'black';
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
 
 function newPage() {
     editor.value = '';
@@ -38,9 +63,28 @@ function copyPage() {
 }
 
 function toggleTheme() {
+    const themeIcon = document.getElementById('themeIcon');
+    const editor = document.getElementById('editor');
+    const toolbar = document.getElementById('toolbar');
+    const toolbarButtons = document.querySelectorAll('#toolbar button');
+    const currentClass = themeIcon.className;
+
+    // Toggle night mode
     isNightMode = !isNightMode;
     document.body.classList.toggle('night-mode');
     editor.classList.toggle('night-mode');
+    toolbar.classList.toggle('night-mode');
+
+    toolbarButtons.forEach(button => button.classList.toggle('night-mode-button'));
+
+
+    if (currentClass === 'ri-moon-line') {
+        // Switch to day mode
+        themeIcon.className = 'ri-sun-line';
+    } else {
+        // Switch to night mode
+        themeIcon.className = 'ri-moon-line';
+    }
 }
 
 let showCounter = true;
