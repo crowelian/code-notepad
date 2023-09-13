@@ -58,6 +58,20 @@
                 <label for="showCounter">Show Counter:</label>
                 <input type="checkbox" id="showCounter" checked>
             </div>
+            <div class="input-row">
+                <label for="useMonospace">Use Monospace Font:</label>
+                <input type="checkbox" id="useMonospace">
+            </div>
+            <div class="input-row">
+                <label for="savedFileName">Saved File Name:</label>
+                <input type="text" id="savedFileName" value="page.txt">
+            </div>
+
+            <div class="input-row">
+                <button onclick="restoreDefaultSettings()">Restore Default Settings</button>
+            </div>
+
+
             <button id="closeSettingsBtn" onclick="closeSettings()">
                 <i class="ri-close-circle-fill"></i>
             </button>

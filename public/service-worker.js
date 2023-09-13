@@ -1,10 +1,11 @@
 const CACHE_NAME = 'code-notepad-cache-v1';
 const urlsToCache = [
     '/',
+    '/index.html',
     '/styles.css',
     '/script.js',
     '/manifest.json',
-    '/icon.png'
+    '/notepad_icon.png'
 ];
 
 self.addEventListener('install', (event) => {
