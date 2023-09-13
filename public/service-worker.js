@@ -5,7 +5,9 @@ const urlsToCache = [
     '/styles.css',
     '/script.js',
     '/manifest.json',
-    '/notepad_icon.png'
+    '/notepad_icon.png',
+    '/3rdpart/fonts/remixicon.css',
+    '/fonts/remixicon.woff2'
 ];
 
 self.addEventListener('install', (event) => {
