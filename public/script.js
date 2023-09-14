@@ -54,8 +54,10 @@ updateDateTime();
 setInterval(updateDateTime, 1000);
 
 function newPage() {
-    editor.value = '';
-    saveContent();
+    showPrompt('Are you sure you want to create a new blank page?', () => {
+        editor.value = '';
+        saveContent();
+    });
 }
 
 function downloadPage() {
@@ -71,6 +73,12 @@ function downloadPage() {
 document.getElementById('fileInput').addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
+        openPage(file);
+    }
+});
+
+function openPage(file) {
+    showPrompt('Are you sure you want to open a new file?', () => {
         try {
             const reader = new FileReader();
 
@@ -84,8 +92,9 @@ document.getElementById('fileInput').addEventListener('change', function () {
         catch {
             console.error("Error opening file...");
         }
-    }
-});
+    });
+}
+
 
 
 function copyPage() {
@@ -100,6 +109,7 @@ function toggleTheme() {
     const toolbarButtons = document.querySelectorAll('#toolbar button');
     const currentClass = themeIcon.className;
     const settingsOverlay = document.getElementById('settingsOverlay');
+    const promptOverlay = document.getElementById('promptOverlay');
 
     // Toggle night mode
     isNightMode = !isNightMode;
@@ -107,6 +117,7 @@ function toggleTheme() {
     editor.classList.toggle('night-mode');
     toolbar.classList.toggle('night-mode');
     settingsOverlay.classList.toggle('night-mode');
+    promptOverlay.classList.toggle('night-mode');
 
     toolbarButtons.forEach(button => button.classList.toggle('night-mode-button'));
 
@@ -127,12 +138,14 @@ function setTheme() {
     const toolbar = document.getElementById('toolbar');
     const toolbarButtons = document.querySelectorAll('#toolbar button');
     const settingsOverlay = document.getElementById('settingsOverlay');
+    const promptOverlay = document.getElementById('promptOverlay');
 
     if (isNightMode) {
         document.body.classList.add('night-mode');
         editor.classList.add('night-mode');
         toolbar.classList.add('night-mode');
         settingsOverlay.classList.add('night-mode');
+        promptOverlay.classList.add('night-mode');
         toolbarButtons.forEach(button => button.classList.add('night-mode-button'));
         themeIcon.className = 'ri-moon-line';
     } else {
@@ -140,6 +153,7 @@ function setTheme() {
         editor.classList.remove('night-mode');
         toolbar.classList.remove('night-mode');
         settingsOverlay.classList.remove('night-mode');
+        promptOverlay.classList.add('night-mode');
         toolbarButtons.forEach(button => button.classList.remove('night-mode-button'));
         themeIcon.className = 'ri-sun-line';
     }
@@ -210,6 +224,25 @@ function restoreDefaultSettings() {
 
     saveSettings();
 }
+
+let currentAction = null;
+
+function showPrompt(message, action) {
+    document.getElementById('promptMessage').textContent = message;
+    document.getElementById('promptOverlay').style.display = 'block';
+    currentAction = action;
+}
+
+function handlePrompt(isConfirmed) {
+    document.getElementById('promptOverlay').style.display = 'none';
+    if (isConfirmed && currentAction) {
+        currentAction();
+    }
+    currentAction = null;
+}
+
+
+
 
 
 
