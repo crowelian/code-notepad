@@ -220,7 +220,12 @@ function restoreDefaultSettings() {
     showCounter = defaultSettings.showCounter;
     settings.savedFileName = defaultSettings.savedFileName;
     editor.style.fontFamily = defaultSettings.useMonospace ? 'Monaco, monospace' : 'Arial, sans-serif';
+
+    document.getElementById('savedFileName').value = defaultSettings.savedFileName;
+
     closeSettings();
+
+    localStorage.removeItem('settings');
 
     saveSettings();
 }
