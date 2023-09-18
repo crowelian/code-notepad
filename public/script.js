@@ -301,6 +301,42 @@ function saveContent() {
 
 
 
+// Share functionality
+const MAX_URL_LENGTH = 2000;
+
+function sharePage() {
+    const text = editor.value;
+    const base64Text = btoa(unescape(encodeURIComponent(text)));
+    const url = `${window.location.origin}${window.location.pathname}?text=${base64Text}`;
+
+    if (url.length > MAX_URL_LENGTH) {
+        showNotification("error", "Text is too long to share!");
+        return;
+    }
+
+    navigator.clipboard.writeText(url).then(() => {
+        showNotification("warning", "URL copied to clipboard! <br/>You can now share this note", 6000);
+    }).catch(err => {
+        showNotification("error", "Could not copy URL: " + err);
+    });
+}
+
+// Initialize editor content from URL if available
+window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const base64Text = urlParams.get('text');
+
+    if (base64Text) {
+        const text = decodeURIComponent(escape(atob(base64Text)));
+        editor.value = text;
+        saveContent();
+    }
+});
+
+
+
+
+
 // Initialize settings
 isNightMode = settings.nightMode;
 editor.style.lineHeight = settings.lineHeight;
