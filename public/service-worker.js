@@ -1,4 +1,4 @@
-const CACHE_NAME = 'code-notepad-cache-v2.2';
+const CACHE_NAME = 'code-notepad-cache-v2.3';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -7,7 +7,12 @@ const urlsToCache = [
     '/manifest.json',
     '/notepad_icon.png',
     '/3rdparty/fonts/remixicon.css',
-    '/3rdparty/fonts/remixicon.woff2'
+    '/3rdparty/fonts/remixicon.woff',
+    '/3rdparty/fonts/remixicon.glyph.json',
+    '/3rdparty/fonts/remixicon.woff2',
+    '/3rdparty/fonts/remixicon.eot',
+    '/3rdparty/fonts/remixicon.ttf',
+    '/3rdparty/fonts/remixicon.svg',
 ];
 
 
