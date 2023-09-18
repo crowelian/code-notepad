@@ -1,4 +1,4 @@
-const CACHE_NAME = 'code-notepad-cache-v1';
+const CACHE_NAME = 'code-notepad-cache-v2.2';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -10,6 +10,9 @@ const urlsToCache = [
     '/3rdparty/fonts/remixicon.woff2'
 ];
 
+
+
+
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -17,6 +20,8 @@ self.addEventListener('install', (event) => {
                 return cache.addAll(urlsToCache);
             })
     );
+
+    self.skipWaiting();
 });
 
 self.addEventListener('fetch', (event) => {
@@ -29,4 +34,9 @@ self.addEventListener('fetch', (event) => {
                 return fetch(event.request);
             })
     );
+});
+
+
+self.addEventListener('activate', function (event) {
+    clients.claim();
 });
