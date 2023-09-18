@@ -327,9 +327,11 @@ window.addEventListener('load', () => {
     const base64Text = urlParams.get('text');
 
     if (base64Text) {
-        const text = decodeURIComponent(escape(atob(base64Text)));
-        editor.value = text;
-        saveContent();
+        showPrompt('Are you sure you want to open this encoded text?', () => {
+            const text = decodeURIComponent(escape(atob(base64Text)));
+            editor.value = text;
+            saveContent();
+        });
     }
 });
 
