@@ -38,11 +38,29 @@ function showNotification(type, text, duration = 5000) {
         notificationContainer.removeChild(notification);
     };
 
+    const timerBar = document.createElement('div');
+    timerBar.className = 'timer-bar';
+    timerBar.style.width = '100%';
+
     notification.innerHTML = `<span class="icon">${getIcon(type)}</span> ${text}`;
 
     notification.appendChild(closeButton);
+    notification.appendChild(timerBar);
 
     notificationContainer.appendChild(notification);
+
+    // Initialize timer bar animation
+    let startTime = null;
+    function animate(time) {
+        if (!startTime) startTime = time;
+        const elapsed = time - startTime;
+        const width = 100 - (elapsed / duration * 100);
+        timerBar.style.width = `${Math.max(width, 0)}%`;
+        if (elapsed < duration) {
+            requestAnimationFrame(animate);
+        }
+    }
+    requestAnimationFrame(animate);
 
     setTimeout(() => {
         notificationContainer.removeChild(notification);

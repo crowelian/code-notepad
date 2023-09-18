@@ -18,8 +18,6 @@ window.addEventListener('offline', updateOnlineStatus);
 
 let settings = JSON.parse(localStorage.getItem('settings')) || defaultSettings;
 
-
-
 function updateOnlineStatus() {
     const statusElement = document.getElementById('status');
     const statusIcon = document.getElementById('statusIcon');
@@ -238,6 +236,14 @@ function restoreDefaultSettings() {
     localStorage.removeItem('settings');
 
     saveSettings();
+
+
+
+    if (typeof showNotification === 'function') {
+        showNotification('warning', 'Restored default settings...', 4000);
+    } else {
+        console.error('showNotification function is not defined. Please import notification.js.');
+    }
 }
 
 let currentAction = null;
