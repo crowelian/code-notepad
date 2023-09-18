@@ -42,9 +42,7 @@
         <button onclick="showSettings()">
             <i class="ri-settings-line"></i>
         </button>
-        <button id="shareButton" onclick="sharePage()">
-            <i class="ri-share-fill"></i>
-        </button>
+
 
         <span id="status">
             <i id="statusIcon" class="ri-checkbox-blank-circle-line"></i>
@@ -71,6 +69,12 @@
             <div class="input-row">
                 <label for="savedFileName">Save as filename:</label>
                 <input type="text" id="savedFileName" value="page.txt">
+            </div>
+            <div class="input-row">
+                <button id="shareButton" onclick="sharePage()">
+                    <i class="ri-share-fill"></i>
+                    Share this text as a link
+                </button>
             </div>
 
             <div class="input-row">
