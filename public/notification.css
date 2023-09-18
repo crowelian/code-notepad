@@ -1,0 +1,34 @@
+#notification-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.notification {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    opacity: 0.9;
+}
+
+.notification.message {
+    background-color: #4CAF50;
+}
+
+.notification.warning {
+    background-color: #FF9800;
+}
+
+.notification.error {
+    background-color: #F44336;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}

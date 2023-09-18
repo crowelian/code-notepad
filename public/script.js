@@ -18,6 +18,8 @@ window.addEventListener('offline', updateOnlineStatus);
 
 let settings = JSON.parse(localStorage.getItem('settings')) || defaultSettings;
 
+
+
 function updateOnlineStatus() {
     const statusElement = document.getElementById('status');
     const statusIcon = document.getElementById('statusIcon');
@@ -28,6 +30,14 @@ function updateOnlineStatus() {
     } else {
         statusIcon.className = 'ri-wifi-off-fill';
         statusElement.style.color = 'red';
+
+
+        if (typeof showNotification === 'function') {
+            showNotification('error', 'No Internet Connection, using offline-mode', 4000);
+        } else {
+            console.error('showNotification function is not defined. Please import notification.js.');
+        }
+
     }
 }
 
